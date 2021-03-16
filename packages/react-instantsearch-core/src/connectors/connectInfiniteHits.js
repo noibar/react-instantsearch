@@ -92,7 +92,8 @@ export default createConnector({
     const { page, hits, hitsPerPage, nbPages, _state: state } = results;
 
     this._cache = props.cache ? props.cache : this._cache || getInMemoryCache();
-    const cachedHits = this._cache.read({ state }) || {};
+    const cachedHits = /*this._cache.read({ state }) ||*/ {};
+    console.log('dont use cache that returns: ', this._cache.read({ state }) )
 
     const hitsWithPositions = addAbsolutePositions(hits, hitsPerPage, page);
     const hitsWithPositionsAndQueryID = addQueryID(
